@@ -84,6 +84,7 @@ SUM(revenue) OVER (ORDER BY revenue DESC)
 
 Top 20% products drive ~80% revenue
 Helps prioritize business focus
+
 ⚠️ 3. Anomaly Detection
 Detects unusually large orders
 
@@ -97,6 +98,7 @@ Z-score method
 
 Fraud detection
 Bulk order identification
+
 🏆 4. Ranking & Window Functions
 
 Used:
@@ -110,7 +112,9 @@ NTILE() → percentile grouping
 Top products per city
 Customer segmentation
 Sales ranking
+
 📦 Supply Chain Insights
+
 Inventory Optimization
 Identify overstocked vs understocked items
 Improve warehouse efficiency
@@ -123,7 +127,9 @@ Improve logistics planning
 Return Analysis
 High return % → quality/logistics issue
 Helps reduce revenue loss
+
 🧠 SQL Techniques Used
+
 1. CTEs (Common Table Expressions)
 
 👉 Used for:
@@ -149,6 +155,7 @@ Nested calculations
 
 INNER JOIN
 LEFT JOIN
+
 ⚠️ Common Pitfalls (Learnings)
 
 ❌ Using COUNT() instead of SUM() for quantity
