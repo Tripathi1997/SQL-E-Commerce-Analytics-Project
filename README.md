@@ -37,7 +37,7 @@ It focuses on deriving **actionable business insights** using advanced SQL techn
 
 ---
 
-## 📊 Sample Insights
+## 📊 Key Business Insights
 
 * 🔥 Top 20% products contribute ~80% of total revenue
 * 📉 Customer retention drops significantly after Month 1
@@ -62,6 +62,8 @@ sql-ecommerce-analytics/
 ---
 
 ## 🗺️ Data Model
+
+This ER diagram represents relationships between customers, orders, products, inventory, and logistics systems.
 
 ![ER Diagram](ER_Diagram.png)
 
