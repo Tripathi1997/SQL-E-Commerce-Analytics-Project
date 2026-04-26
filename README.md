@@ -61,6 +61,12 @@ sql-ecommerce-analytics/
 
 ---
 
+## 🗺️ Data Model
+
+![ER Diagram](ER_diagram.png)
+
+---
+
 ## ⚙️ Tech Stack
 
 * SQL (MySQL)
