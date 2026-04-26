@@ -1,4 +1,3 @@
-# SQL-E-Commerce-Analytics-Project
 # 📊 SQL E-Commerce Analytics Project
 
 ![SQL](https://img.shields.io/badge/SQL-Advanced-blue)
