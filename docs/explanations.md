@@ -1,187 +1,260 @@
-📊 Supply Chain / E-Commerce Analytics – Explanation & Notes
-🎯 Project Objective
+# 📊 Supply Chain / E-Commerce Analytics
 
-This project focuses on analyzing an end-to-end supply chain dataset (orders, products, inventory, shipments, returns) to derive actionable business insights using SQL.
+### Explanation & Notes
 
-Key goals:
+---
 
-Understand customer behavior
-Optimize inventory and warehouse operations
-Identify revenue drivers
-Detect anomalies and inefficiencies
-🧱 Data Model Overview
+## 🎯 Project Objective
 
-The dataset consists of the following core tables:
+This project analyzes an **end-to-end supply chain dataset** (orders, products, inventory, shipments, returns) to generate **actionable business insights using SQL**.
 
-customers → customer details
-orders → order-level information
-order_items → product-level details per order
-products → product catalog
-inventory → stock levels per warehouse
-warehouses → location data
-shipments → delivery tracking
-returns → returned orders
-🔗 Relationships
-customers → orders (1:M)
-orders → order_items (1:M)
-products → order_items (1:M)
-warehouses → inventory (1:M)
-orders → shipments (1:1 or 1:M)
-orders → returns (optional relationship)
-📌 Key Metrics & Concepts
-1️⃣ Revenue Calculation
+### Key Goals
+
+* Understand **customer behavior**
+* Optimize **inventory & warehouse operations**
+* Identify **revenue drivers**
+* Detect **anomalies and inefficiencies**
+
+---
+
+## 🧱 Data Model Overview
+
+### Core Tables
+
+| Table         | Description                     |
+| ------------- | ------------------------------- |
+| `customers`   | Customer details                |
+| `orders`      | Order-level information         |
+| `order_items` | Product-level details per order |
+| `products`    | Product catalog                 |
+| `inventory`   | Stock levels per warehouse      |
+| `warehouses`  | Warehouse location data         |
+| `shipments`   | Delivery tracking               |
+| `returns`     | Returned orders                 |
+
+---
+
+## 🔗 Relationships
+
+| Relationship           | Type         |
+| ---------------------- | ------------ |
+| customers → orders     | 1 : Many     |
+| orders → order_items   | 1 : Many     |
+| products → order_items | 1 : Many     |
+| warehouses → inventory | 1 : Many     |
+| orders → shipments     | 1 : 1 / Many |
+| orders → returns       | Optional     |
+
+---
+
+## 📌 Key Metrics & Concepts
+
+### 1️⃣ Revenue Calculation
+
+```sql
 (oi.quantity * p.price) - oi.discount
+```
 
-👉 Represents net revenue
+* Represents **net revenue**
+* Includes discounts
+* Used across all revenue analysis
 
-Includes discounts
-Used across all revenue-based analysis
-2️⃣ Average Order Value (AOV)
+---
+
+### 2️⃣ Average Order Value (AOV)
+
+```text
 Total Revenue / Total Orders
+```
 
-👉 Measures customer spending behavior
+* Measures **customer spending behavior**
 
-3️⃣ Inventory Turnover
+---
+
+### 3️⃣ Inventory Turnover
+
+```text
 Total Sales / Total Stock
+```
 
-👉 Identifies:
+* Identifies:
 
-Fast-moving products 🔥
-Slow-moving / dead stock ⚠️
-4️⃣ Delivery Time Gap
+  * 🔥 Fast-moving products
+  * ⚠️ Slow-moving / dead stock
+
+---
+
+### 4️⃣ Delivery Time Gap
+
+```sql
 DATEDIFF(delivery_date, order_date)
+```
 
-👉 Measures supply chain efficiency
+* Measures **supply chain efficiency**
 
-5️⃣ Return Percentage
+---
+
+### 5️⃣ Return Percentage
+
+```text
 Returned Quantity / Total Sold Quantity
+```
 
-👉 Helps detect:
+* Helps detect:
 
-Poor product quality
-Logistics issues
-🔥 Advanced Analytics Implemented
-📊 1. Cohort Analysis (Customer Retention)
-Customers grouped by first purchase month
-Tracks how many return in subsequent months
+  * Product quality issues
+  * Logistics inefficiencies
 
-Key logic:
+---
 
+## 🔥 Advanced Analytics
+
+### 📊 Cohort Analysis (Customer Retention)
+
+* Groups customers by **first purchase month**
+* Tracks repeat activity over time
+
+```sql
 TIMESTAMPDIFF(MONTH, first_order_date, order_date)
+```
 
-👉 Insights:
+**Insights:**
 
-Retention drop patterns
-Customer loyalty trends
-📈 2. Pareto Analysis (80/20 Rule)
-Identifies top contributors to revenue
+* Retention drop patterns
+* Customer loyalty trends
 
-Key logic:
+---
 
+### 📈 Pareto Analysis (80/20 Rule)
+
+* Identifies top revenue contributors
+
+```sql
 SUM(revenue) OVER (ORDER BY revenue DESC)
+```
 
-👉 Insights:
+**Insights:**
 
-Top 20% products drive ~80% revenue
-Helps prioritize business focus
+* Top 20% products generate ~80% revenue
+* Helps prioritize focus areas
 
-⚠️ 3. Anomaly Detection
-Detects unusually large orders
+---
 
-Approaches:
+### ⚠️ Anomaly Detection
 
-Above average
-Top percentile (NTILE)
-Z-score method
+* Detects unusually large or abnormal orders
 
-👉 Use cases:
+**Approaches:**
 
-Fraud detection
-Bulk order identification
+* Above average
+* Percentile (`NTILE`)
+* Z-score
 
-🏆 4. Ranking & Window Functions
+**Use Cases:**
 
-Used:
+* Fraud detection
+* Bulk order identification
 
-RANK() → handles ties
-ROW_NUMBER() → strict ranking
-NTILE() → percentile grouping
+---
 
-👉 Applications:
+### 🏆 Ranking & Window Functions
 
-Top products per city
-Customer segmentation
-Sales ranking
+| Function       | Purpose             |
+| -------------- | ------------------- |
+| `RANK()`       | Handles ties        |
+| `ROW_NUMBER()` | Strict ranking      |
+| `NTILE()`      | Percentile grouping |
 
-📦 Supply Chain Insights
+**Applications:**
 
-Inventory Optimization
-Identify overstocked vs understocked items
-Improve warehouse efficiency
-Warehouse Performance
-Compare stock levels across cities
-Detect imbalance in distribution
-Shipment Efficiency
-Analyze delayed deliveries
-Improve logistics planning
-Return Analysis
-High return % → quality/logistics issue
-Helps reduce revenue loss
+* Top products per city
+* Customer segmentation
+* Sales ranking
 
-🧠 SQL Techniques Used
+---
 
-1. CTEs (Common Table Expressions)
+## 📦 Supply Chain Insights
 
-👉 Used for:
+### Inventory Optimization
 
-Breaking complex queries
-Improving readability
-2. Window Functions
+* Identify overstocked vs understocked items
+* Improve stock efficiency
 
-👉 Used for:
+### Warehouse Performance
 
-Ranking
-Running totals
-Cohort calculations
-3. Subqueries
+* Compare stock distribution across cities
+* Detect imbalances
 
-👉 Used for:
+### Shipment Efficiency
 
-Filtering
-Nested calculations
-4. Joins
+* Analyze delayed deliveries
+* Improve logistics planning
 
-👉 Types used:
+### Return Analysis
 
-INNER JOIN
-LEFT JOIN
+* High return % → product/logistics issues
+* Helps reduce revenue loss
 
-⚠️ Common Pitfalls (Learnings)
+---
 
-❌ Using COUNT() instead of SUM() for quantity
+## 🧠 SQL Techniques Used
 
-❌ Ignoring duplicate rows due to joins
+### 1. CTEs (Common Table Expressions)
 
-❌ Using ABS() in date differences (hides data issues)
+* Simplify complex queries
+* Improve readability
 
-❌ Not handling division by zero
+### 2. Window Functions
 
+* Ranking
+* Running totals
+* Cohort calculations
 
-🎯 Business Impact
+### 3. Subqueries
 
-This analysis helps:
+* Filtering
+* Nested logic
 
-Improve revenue by identifying top-performing products
-Increase retention using cohort insights
-Reduce inventory costs by optimizing stock
-Detect anomalies and prevent potential fraud
-Improve delivery performance
-🚀 Conclusion
+### 4. Joins
+
+* INNER JOIN
+* LEFT JOIN
+
+---
+
+## ⚠️ Common Pitfalls (Learnings)
+
+* ❌ Using `COUNT()` instead of `SUM()` for quantity
+* ❌ Ignoring duplicates caused by joins
+* ❌ Using `ABS()` in date differences (hides issues)
+* ❌ Not handling division by zero
+
+---
+
+## 🎯 Business Impact
+
+This analysis enables:
+
+* 📈 Revenue growth through top product identification
+* 🔁 Improved retention via cohort insights
+* 📦 Reduced inventory costs
+* ⚠️ Early anomaly/fraud detection
+* 🚚 Better delivery performance
+
+---
+
+## 🚀 Conclusion
 
 This project demonstrates how SQL can be used to:
 
-Solve real-world business problems
-Perform advanced analytics
-Generate actionable insights
+* Solve **real-world business problems**
+* Perform **advanced analytics**
+* Generate **actionable insights**
 
-It bridges the gap between raw data and business decision-making.
+It bridges the gap between **raw data and business decision-making**.
+
+---
+
+## 🎤 Interview Summary
+
+> Built a supply chain analytics solution using SQL covering revenue analysis, cohort retention, anomaly detection, and inventory optimization to drive business insights.
