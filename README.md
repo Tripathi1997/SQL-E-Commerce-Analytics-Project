@@ -114,5 +114,10 @@ Data Analyst | SQL | Business Analytics
 
 ---
 
+## ⚠️ Note
+This repository is for learning and reference purposes. Direct modifications are restricted.
+
+----
+
 ## ⭐ If you found this useful, consider giving it a star!
 
