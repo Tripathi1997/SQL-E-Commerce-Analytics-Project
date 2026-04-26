@@ -159,9 +159,13 @@ LEFT JOIN
 ⚠️ Common Pitfalls (Learnings)
 
 ❌ Using COUNT() instead of SUM() for quantity
+
 ❌ Ignoring duplicate rows due to joins
+
 ❌ Using ABS() in date differences (hides data issues)
+
 ❌ Not handling division by zero
+
 
 🎯 Business Impact
 
