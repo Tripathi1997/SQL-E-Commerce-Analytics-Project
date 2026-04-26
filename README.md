@@ -63,7 +63,7 @@ sql-ecommerce-analytics/
 
 ## 🗺️ Data Model
 
-![ER Diagram](ER_diagram.png)
+![ER Diagram](ER_Diagram.png)
 
 ---
 
