@@ -102,6 +102,11 @@ sql-ecommerce-analytics/
 
 ---
 
+## 🏷️ Tags
+SQL • Data Analysis • Power BI • Cohort Analysis • Business Intelligence
+
+---
+
 ## 👨‍💻 Author
 
 **Shubham Tripathi**
