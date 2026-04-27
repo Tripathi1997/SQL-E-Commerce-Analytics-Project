@@ -94,7 +94,7 @@ pareto as
    
 )
 
-select product_revenvue,round(running_revenvue / total_revenvue,3) as cum_revenvue
+select product_revenvue,round(running_revenvue / total_revenvue,3) as cum_revenvue_pct
 from pareto
 where running_revenvue <= 0.8 * total_revenvue;
 
